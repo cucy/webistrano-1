@@ -124,7 +124,7 @@ class DeploymentsController < ApplicationController
   end
 
   def ensure_deployment_possible
-    if current_stage.deployment_possible?
+    if ensure_user_access && current_stage.deployment_possible?
       true
     else
       respond_to do |format|
