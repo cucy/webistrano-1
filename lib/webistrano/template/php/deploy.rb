@@ -65,13 +65,13 @@ namespace :deploy do
   end
 
   task :symlink_config_files do
-#    run <<-CMD
+    run <<-CMD
 #      rm -rf #{latest_release}/config &&
 #      mv  #{latest_release}/configs/#{environment} #{latest_release}/config &&
 #      rm -r #{latest_release}/configs &&
-#      rm -f #{current_path} &&
-#      ln -s #{latest_release} #{current_path}
-#    CMD
+      rm -f #{current_path} &&
+      ln -s #{latest_release} #{current_path}
+    CMD
   end
 
   task :deploy_php do
