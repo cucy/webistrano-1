@@ -1,0 +1,17 @@
+app:
+  build: .
+  ports:
+    - "3000:3000"
+  links:
+    - "db:mysql"
+  volumes:
+    - "/var/webistrano/app/data:/opt/data"
+db:
+  image: pomu0326/mariadb:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: root_secret_password
+    MYSQL_DATABASE: webistrano_production
+    MYSQL_USER: webistrano
+    MYSQL_PASSWORD: secret_password
+  volumes:
+    - "/var/webistrano/db/data:/var/lib/mysql"
